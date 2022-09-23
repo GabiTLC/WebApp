@@ -2,9 +2,19 @@
 @{
     ViewData["Title"] = "Bugs";
 }
+<link rel="stylesheet" href="~/css/tableStyle.css" asp-append-version="true"/>
+
 <br></br>
 <br></br>
-<br></br>
+<div class="offset-2 d-flex justify-content-between">
+    <div class="col-6">
+        <h2 class="text-black">Bugs List</h2>
+    </div>
+    <div class="col-2">
+        <a asp-action="" asp-controller="" class="btn btn-info form-control text-white">Add Bug</a>
+    </div>
+</div>
+<div class="offset-2 p-3">
 <table id="example" class="display" style="width:100%">
         <thead>
             <tr>
@@ -37,7 +47,7 @@
             </tr>
         </tfoot>
 </table>
-
+</div>
 @section Scripts
 {
     <script src="~/js/table.js"></script>

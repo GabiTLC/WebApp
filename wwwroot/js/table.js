@@ -2,6 +2,8 @@ $(document).ready(function () {
     // Setup - add a text input to each footer cell
     $(document).ready(function () {
         $('#example').DataTable({
+            dom: "<'position-relative'<'position-absolute pb-5 top-0 start-0'f>>",
+                
             initComplete: function () {
                 var i=0;
                 this.api()
