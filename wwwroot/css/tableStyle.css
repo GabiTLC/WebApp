@@ -1,6 +1,6 @@
-﻿.top {
-    
+﻿div.container {
+    width: 80%;
 }
-.ui-datatable  .ui-column-filter {
-    margin-left: -2px;
+div.id {
+    width: 80%;
 }
