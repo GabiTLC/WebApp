@@ -1,8 +1,9 @@
-@using System.Collections.Specialized
 @{
     ViewData["Title"] = "Bugs";
 }
 <link rel="stylesheet" href="~/css/tableStyle.css" asp-append-version="true"/>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.jqueryui.min.css"/>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"/>
 
 <br></br>
 <br></br>
@@ -15,7 +16,7 @@
     </div>
 </div>
 <div id="table-div" class="offset-2 p-3">
-<table id="example" class="hover order-column stripe" style="width:100%">
+<table id="example" class="display hover order-column stripe" style="width:100%">
         <thead>
             <tr>
                 <th>ID</th>
@@ -26,28 +27,20 @@
                 <th>Platform</th>
             </tr>
             <tr>
-                <th>ID</th>
-                <th>Summary</th>
-                <th>Type</th>
-                <th>Priority</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
                 <th>Severity</th>
                 <th>Platform</th>
             </tr>
         </thead>
-        <tbody>
-        <tr>
-            <td>Tiger Nixon</td>
-            <td>System Architect</td>
-            <td>Edinburgh</td>
-            <td>61</td>
-            <td>2011-04-25</td>
-            <td>$320,800</td>
-        </tr>
-        </tbody>
 </table>
 </div>
 @section Scripts
 {
     <script src="~/js/table.js"></script>
-    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.jqueryui.min.js"></script>
 }

@@ -13,12 +13,9 @@ public class Bug
     public string Priority { get; set; }   //dropdown
     public char Severity { get; set; }   //dropdown
     public string Platform { get; set; }    //dropdown
-    [Required]
     public string Description { get; set; } //areatext
     public string Attachment { get; set; }
-    [Required]
     public string StepsToRepo { get; set; }     //areatext
-    [Required]
     public string ExpectedResult { get; set; }  //area text
     
 }
