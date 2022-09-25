@@ -1,0 +1,132 @@
+@model WebApp.Models.Bug
+
+<link rel="stylesheet" href="~/css/bugPage.css" asp-append-version="true"/>
+
+
+@{
+    ViewData["Title"] = "Add Bug";
+}
+<br/>
+<br/>
+<br/>
+<br/>
+<h2 class="text-info text-dark">@(Model.Id!=0 ? "Edit" : "Add") Bug</h2>
+<div class="pt-2 pl-0">
+    <form method="post">
+        @if (Model.Id != 0)
+        {
+            <input type="hidden" asp-for="Id"/>
+        }
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        
+        <div class="form-group">
+            <div class="col-3">
+                <label asp-for="Summary"></label> @*add style*@
+            </div>
+            <div class="col-8">
+                <input asp-for="Summary" class="form-control"/>
+                <span asp-validation-for="Summary" class="text-danger"></span>
+            </div>
+        </div>
+        @* DESCRIPTION *@
+        <div class="d-flex justify-content-center">    
+            <div>
+                <div class="form-group">
+                    <div class="col-3">
+                        <label asp-for="Description"></label> @*add style*@
+                    </div>
+                    <div class="col-8">
+                        <textarea rows="4" cols="105" asp-for="Description" class="form-control"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-3">
+                        <label asp-for="StepsToRepo"></label> @*add style*@
+                    </div>
+                    <div class="col-8 ">
+                        <textarea rows="4" cols="105" asp-for="Description" class="form-control"></textarea>
+                        <span asp-validation-for="StepsToRepo" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-3">
+                        <label asp-for="ExpectedResult"></label> @*add style*@
+                    </div>
+                    <div class="col-8 ">
+                        <textarea rows="4" cols="105" asp-for="Description" class="form-control"></textarea>
+                        <span asp-validation-for="ExpectedResult" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="form-group">
+                    <div>
+                        <label asp-for="Type"></label> @*add style*@
+                    </div>
+                    <div class="select ml-3 p-2 col-3">
+                        <select>
+                            <option value="Option 1">Select Type...</option>
+                            <option value="Option 2">Option 2</option>
+                            <option value="Option 3">Option 3</option>
+                            <option value="Option 4">Option 4</option>
+                            <option value="Option 5">Option 5</option>
+                            <option value="Option length">Option that has too long of a value to fit</option>
+                        </select>
+                        <span class="focus"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-3 pt-1">
+                        <label asp-for="Priority"></label> @*add style*@
+                    </div>
+                    <div class="select ml-3 p-2 col-3">
+                        <select>
+                            <option value="Option 1">Select Type...</option>
+                            <option value="Option 2">Option 2</option>
+                            <option value="Option 3">Option 3</option>
+                            <option value="Option 4">Option 4</option>
+                            <option value="Option 5">Option 5</option>
+                            <option value="Option length">Option that has too long of a value to fit</option>
+                        </select>
+                        <span class="focus"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-3 pt-1">
+                        <label asp-for="Severity"></label> @*add style*@
+                    </div>
+                    <div class="select ml-3 p-2 col-3">
+                        <select>
+                            <option value="Option 1">Select Type...</option>
+                            <option value="Option 2">Option 2</option>
+                            <option value="Option 3">Option 3</option>
+                            <option value="Option 4">Option 4</option>
+                            <option value="Option 5">Option 5</option>
+                            <option value="Option length">Option that has too long of a value to fit</option>
+                        </select>
+                        <span class="focus"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-3">
+                        <label asp-for="Platform"></label> @*add style*@
+                    </div>
+                    <div class="select ml-3 p-2 col-3">
+                        <select>
+                            <option value="Option 1">Select Type...</option>
+                            <option value="Option 2">Option 2</option>
+                            <option value="Option 3">Option 3</option>
+                            <option value="Option 4">Option 4</option>
+                            <option value="Option 5">Option 5</option>
+                            <option value="Option length">Option that has too long of a value to fit</option>
+                        </select>
+                        <span class="focus"></span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </form>
+</div>
+

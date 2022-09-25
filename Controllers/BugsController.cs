@@ -1,3 +1,4 @@
+using System.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebApp.Models;
@@ -7,14 +8,32 @@ namespace WebApp.Controllers;
 public class BugsController : Controller
 {
     private readonly AppDbContext _db;
-
+    [BindProperty]
+    public Bug Bugs { get; set; }
+    
     public BugsController(AppDbContext db)
     {
         _db = db;
     }
-        public IActionResult Index()
+    public IActionResult Index()
     {
         return View();
+    }
+    public IActionResult AddBug(int? id)
+    {
+        Bugs = new Bug();
+        if (id == null)
+        {
+            //create
+            return View(Bugs);
+        }
+        //update
+        Bugs = _db.Bugs.FirstOrDefault(u => u.Id == id);
+        if (Bugs == null)
+        {
+            return NotFound();
+        }
+        return View(Bugs);
     }
 
     #region Api Calls
