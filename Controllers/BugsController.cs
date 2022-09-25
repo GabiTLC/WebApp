@@ -18,13 +18,13 @@ public class BugsController : Controller
     }
 
     #region Api Calls
-
+    
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
         return Json(new { data = await _db.Bugs.ToListAsync() });
     }
-
+    
     [HttpDelete]
     public async Task<IActionResult> Delete(int id)
     {
