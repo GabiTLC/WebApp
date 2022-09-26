@@ -15,6 +15,7 @@ select {
     appearance: none;
     background-color: transparent;
     border: none;
+    border: transparent;
     padding-left: 10px;
     height: 40px;
     width: 100%;
@@ -25,6 +26,12 @@ select {
     z-index: 1;
     outline: none;
     color: #495057;
+}
+.sel{
+    border: none;
+}
+.sel:focus {
+    box-shadow: none;
 }
 
 select,
@@ -53,6 +60,7 @@ select,
     height: 0.5em;
     background-color: var(--select-arrow);
     clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+    z-index: 2;
 }
 
 select:focus + .focus {
@@ -63,8 +71,8 @@ select:focus + .focus {
        bottom: -1px;
        outline: 3px solid var(--select-focus);
        border-radius: 4px;
-       border: transparent;
-       transition: all 100ms;
+       border-color: #009bff;
+       transition: all 120ms;
 }
 .grid{
     display: grid;

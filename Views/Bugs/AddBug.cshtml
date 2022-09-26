@@ -83,7 +83,7 @@
                         <label asp-for="Type"></label> @*add style*@
                     </div>
                     <div class="select">
-                        <select>
+                        <select asp-for="Type" class="form-control sel">
                             <option value="Null">Select Type...</option>
                             <option value="Game System">Game System</option>
                             <option value="Game Design">Game Design</option>
@@ -106,7 +106,7 @@
                         <label asp-for="Priority"></label> @*add style*@
                     </div>
                     <div class="select">
-                        <select>
+                        <select asp-for="Priority" class="form-control sel">
                             <option value="Null">Select Priority...</option>
                             <option value="Very High">Very High</option>
                             <option value="High">High</option>
@@ -124,7 +124,7 @@
                         <label asp-for="Severity"></label> @*add style*@
                     </div>
                     <div class="select">
-                        <select>
+                        <select  asp-for="Severity" class="form-control sel">
                             <option value="Null">Select Severity...</option>
                             <option value="S">S</option>
                             <option value="A">A</option>
@@ -135,7 +135,6 @@
                         </select>
                         <span class="focus"></span>
                     </div>
-                    <span asp-validation-for="Severity" class="text-danger"></span>
                 </div>
                 @* PLATFORM      *@
                 <div class="form-group">
@@ -143,7 +142,7 @@
                         <label asp-for="Platform"></label> @*add style*@
                     </div>
                     <div class="select">
-                        <select>
+                        <select asp-for="Platform" class="form-control sel">
                             <option value="Null">Select Platform...</option>
                             <option value="All">All</option>
                             <option value="PC">PC</option>
@@ -156,7 +155,6 @@
                         </select>
                         <span class="focus"></span>
                     </div>
-                    <span asp-validation-for="Platform" class="text-danger"></span>
                 </div>
             </div>
             
