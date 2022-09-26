@@ -19,24 +19,41 @@
         }
         <div class="text-danger" asp-validation-summary="ModelOnly"></div>
         
-        <div class="form-group">
-            <div class="col-3">
-                <label asp-for="Summary"></label> @*add style*@
+        <div class="gridBtn">
+            
+            <div class="form-group ml-2">
+                <div class="col-3">
+                    <label asp-for="Summary"></label> @*add style*@
+                </div>
+                <div class="col-10">
+                    <input asp-for="Summary" class="form-control"/>
+                    <span asp-validation-for="Summary" class="text-danger"></span>
+                </div>
             </div>
-            <div class="col-8">
-                <input asp-for="Summary" class="form-control"/>
-                <span asp-validation-for="Summary" class="text-danger"></span>
+            
+            <div class="Buttons">
+                <div class="pb-2">
+                    <button type="submit" class="btn btn-success form-control">
+                        @(Model.Id != 0 ? "Update" : "Create")
+                    </button>
+                </div>
+                
+                <div>
+                    <a asp-action="Index" class="btn btn-danger form-control">Back to List</a>
+                </div>
             </div>
+            
         </div>
-        @* DESCRIPTION *@
-        <div class="d-flex justify-content-center">    
-            <div>
+        
+        <div class="grid ml-2">
+            
+            <div class="Text-Areas">
                 <div class="form-group">
                     <div class="col-3">
                         <label asp-for="Description"></label> @*add style*@
                     </div>
-                    <div class="col-8">
-                        <textarea rows="4" cols="105" asp-for="Description" class="form-control"></textarea>
+                    <div class="col-12">
+                        <textarea rows="4" cols="40" type="text" asp-for="Description" class="form-control"></textarea>
                         <span asp-validation-for="Description" class="text-danger"></span>
                     </div>
                 </div>
@@ -44,89 +61,116 @@
                     <div class="col-3">
                         <label asp-for="StepsToRepo"></label> @*add style*@
                     </div>
-                    <div class="col-8 ">
-                        <textarea rows="4" cols="105" asp-for="Description" class="form-control"></textarea>
-                        <span asp-validation-for="StepsToRepo" class="text-danger"></span>
+                    <div class="col-12">
+                        <textarea rows="5" cols="40" asp-for="StepsToRepo" class="form-control"></textarea>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-3">
                         <label asp-for="ExpectedResult"></label> @*add style*@
                     </div>
-                    <div class="col-8 ">
-                        <textarea rows="4" cols="105" asp-for="Description" class="form-control"></textarea>
+                    <div class="col-12">
+                        <textarea rows="2" cols="40" asp-for="ExpectedResult" class="form-control"></textarea>
                         <span asp-validation-for="ExpectedResult" class="text-danger"></span>
                     </div>
                 </div>
             </div>
-            <div>
+
+            <div class="Selectors">
+                @* TYPE *@
                 <div class="form-group">
                     <div>
                         <label asp-for="Type"></label> @*add style*@
                     </div>
-                    <div class="select ml-3 p-2 col-3">
+                    <div class="select">
                         <select>
-                            <option value="Option 1">Select Type...</option>
-                            <option value="Option 2">Option 2</option>
-                            <option value="Option 3">Option 3</option>
-                            <option value="Option 4">Option 4</option>
-                            <option value="Option 5">Option 5</option>
-                            <option value="Option length">Option that has too long of a value to fit</option>
+                            <option value="Null">Select Type...</option>
+                            <option value="Game System">Game System</option>
+                            <option value="Game Design">Game Design</option>
+                            <option value="Level Design">Level Design</option>
+                            <option value="Character Design">Character Design</option>
+                            <option value="Graphics">Graphics</option>
+                            <option value="Texture/Visual">Texture/Visual</option>
+                            <option value="Animation">Animation</option>
+                            <option value="Sound">Sound</option>
+                            <option value="Networking">Networking</option>
+                            <option value="Misc">Misc</option>
                         </select>
                         <span class="focus"></span>
                     </div>
+                    <span asp-validation-for="Type" class="text-danger "></span>
                 </div>
+                @* PRIORITY      *@
                 <div class="form-group">
-                    <div class="col-3 pt-1">
+                    <div>
                         <label asp-for="Priority"></label> @*add style*@
                     </div>
-                    <div class="select ml-3 p-2 col-3">
+                    <div class="select">
                         <select>
-                            <option value="Option 1">Select Type...</option>
-                            <option value="Option 2">Option 2</option>
-                            <option value="Option 3">Option 3</option>
-                            <option value="Option 4">Option 4</option>
-                            <option value="Option 5">Option 5</option>
-                            <option value="Option length">Option that has too long of a value to fit</option>
+                            <option value="Null">Select Priority...</option>
+                            <option value="Very High">Very High</option>
+                            <option value="High">High</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Low">Low</option>
+                            <option value="Very Low">Very Low</option>
                         </select>
                         <span class="focus"></span>
                     </div>
+                    <span asp-validation-for="Priority" class="text-danger "></span>
                 </div>
+                @* SEVERITY                          *@
                 <div class="form-group">
-                    <div class="col-3 pt-1">
+                    <div>
                         <label asp-for="Severity"></label> @*add style*@
                     </div>
-                    <div class="select ml-3 p-2 col-3">
+                    <div class="select">
                         <select>
-                            <option value="Option 1">Select Type...</option>
-                            <option value="Option 2">Option 2</option>
-                            <option value="Option 3">Option 3</option>
-                            <option value="Option 4">Option 4</option>
-                            <option value="Option 5">Option 5</option>
-                            <option value="Option length">Option that has too long of a value to fit</option>
+                            <option value="Null">Select Severity...</option>
+                            <option value="S">S</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                            <option value="F">F</option>
                         </select>
                         <span class="focus"></span>
                     </div>
+                    <span asp-validation-for="Severity" class="text-danger"></span>
                 </div>
+                @* PLATFORM      *@
                 <div class="form-group">
-                    <div class="col-3">
+                    <div>
                         <label asp-for="Platform"></label> @*add style*@
                     </div>
-                    <div class="select ml-3 p-2 col-3">
+                    <div class="select">
                         <select>
-                            <option value="Option 1">Select Type...</option>
-                            <option value="Option 2">Option 2</option>
-                            <option value="Option 3">Option 3</option>
-                            <option value="Option 4">Option 4</option>
-                            <option value="Option 5">Option 5</option>
-                            <option value="Option length">Option that has too long of a value to fit</option>
+                            <option value="Null">Select Platform...</option>
+                            <option value="All">All</option>
+                            <option value="PC">PC</option>
+                            <option value="XB">XB</option>
+                            <option value="PS">PS</option>
+                            <option value="NTD">NTD</option>
+                            <option value="iOS">iOS</option>
+                            <option value="AnDr">AnDr</option>
+                            <option value="WGL">WGL</option>
                         </select>
                         <span class="focus"></span>
                     </div>
+                    <span asp-validation-for="Platform" class="text-danger"></span>
                 </div>
-
             </div>
+            
+            <div class="right-space">
+                
+            </div>
+            
         </div>
+        
     </form>
 </div>
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial"/>
+}
 

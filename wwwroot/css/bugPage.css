@@ -6,7 +6,7 @@
 
 :root {
     --select-border: #cdd3d9;
-    --select-focus: rgb(161, 200, 250);
+    --select-focus: rgb(158, 218, 255);
     --select-arrow: var(--select-border);
 }
 
@@ -15,8 +15,8 @@ select {
     appearance: none;
     background-color: transparent;
     border: none;
-    padding: 0 1em 0 0;
-    margin: 0;
+    padding-left: 10px;
+    height: 40px;
     width: 100%;
     font-family: inherit;
     font-size: 16px;
@@ -34,13 +34,12 @@ select,
 .select {
     display: grid;
     grid-template-areas: "select";
-    
+    padding-right: 10px;
     position: relative;
     min-width: 20ch;
-    max-width: 99ch;
+    max-width: 30ch;
     border: 1px solid var(--select-border);
     border-radius: 4px;
-    padding: 0.25em 0.5em;
     font-size: 1rem;
     cursor: pointer;
     line-height: 1.1;
@@ -49,6 +48,7 @@ select,
 :not(.select--multiple)::after {
     content: "";
     justify-self: end;
+    margin: 17px 0 0 0;
     width: 0.8em;
     height: 0.5em;
     background-color: var(--select-arrow);
@@ -65,4 +65,25 @@ select:focus + .focus {
        border-radius: 4px;
        border: transparent;
        transition: all 100ms;
+}
+.grid{
+    display: grid;
+    grid-template-columns: 60% 30% 10%;
+    gap: 4rem;
+}
+.gridBtn{
+    display:grid;
+    grid-template-columns: 85% 10%;
+}
+@media (max-width: 500px) {
+    .grid {
+        display: grid;
+        grid-template-columns: 50% 50% 0;
+        gap: 0;
+    }
+
+    .select {
+        min-width: 5ch;
+        max-width: 20ch;
+    }
 }
