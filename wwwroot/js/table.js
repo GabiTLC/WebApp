@@ -1,7 +1,6 @@
 $(document).ready(function () {
-    // Setup - add a text input to each footer cell
-    $(document).ready(function () {
-        $('#example').DataTable({
+     let id=0;
+     $('#example').DataTable({
             pagingType: 'full_numbers',         // first, previous, next and last buttons on the table
             responsive: true,       //makes the table responsive
             columnDefs: [
@@ -19,12 +18,16 @@ $(document).ready(function () {
                 "type": "GET",
                 "datatype": "json"
             },
-            "columns": [            //columns width and additional column specific functionalities
-                { "data": "id", "width":"5%" },
+            "columns": [//columns width and additional column specific functionalities
+                { "data": "id",
+                        "render":function (data) {
+                                id=data; //cashing the id value for later uses
+                            return data;
+                        },
+                    "width":"5%" },
                 { "data": "summary",
                     "render": function (data) {         //links on summary column
-                        //add dynamic link to specific bug page
-                        return '<a class="text-dark" href="/Bugs/DisplayBug/">'+data+'</a>';
+                        return `<a class="text-dark" href="/Bugs/DisplayBug?id=${id}">${data}</a>`;
                     },
                     "width":"45%" 
                 },
@@ -34,7 +37,7 @@ $(document).ready(function () {
                 { "data": "platform", "width":"10%" },
             ],
             "width":"100%",
-            
+         
             initComplete: function () {     // selective search implementation on columns [2,End]
                 let i=0;
                 this.api()
@@ -68,7 +71,6 @@ $(document).ready(function () {
                             });
                         i++;
                     });
-            },
-        });
+           },
     });
 });

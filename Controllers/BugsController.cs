@@ -19,6 +19,21 @@ public class BugsController : Controller
     {
         return View();
     }
+
+    public IActionResult DisplayBug(int? id)
+    {
+        if (id == null || id == 0)
+        {
+            return NotFound();
+        }
+        var bugFromDb = _db.Bugs.Find(id);
+        if (bugFromDb == null)
+        {
+            return NotFound();
+        }
+        return View(bugFromDb);
+    }
+    
     public IActionResult AddBug(int? id)
     {
         Bugs = new Bug();

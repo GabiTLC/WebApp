@@ -1,4 +1,4 @@
-@model WebApp.Models.Bug
+@model Bug
 
 <link rel="stylesheet" href="~/css/bugPage.css" asp-append-version="true"/>
 
@@ -11,13 +11,8 @@
 <br/>
 <br/>
 <h2 class="text-info text-dark">@(Model.Id!=0 ? "Edit" : "Add") Bug</h2>
-@if (Model.Id != 0)
-        {
-            <h4 class="text-info text-dark">Changes will only be aplied upon hiting the "Confirm Edit" Button></h4>
-        }
-
 <div class="pt-2 pl-0">
-    <form method="post" asp-controller="Bugs" asp-action="AddBug">
+    <form method="get" asp-controller="Bugs" asp-action="DisplayBug">
         @if (Model.Id != 0)
         {
             <input type="hidden" asp-for="Id"/>
@@ -38,9 +33,8 @@
             
             <div class="Buttons">
                 <div class="pb-2">
-                    <button type="submit" class="btn btn-success form-control" formmethod="post">
-                        @(Model.Id != 0 ? "Confirm Edit" : "Create")
-                    </button>
+                    <a asp-action="AddBug" asp-route-id="@Model.Id" asp-controller="Bugs" class="btn btn-info form-control text-white">
+                                Edit Bug</a>
                 </div>
                 
                 <div>
