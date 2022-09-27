@@ -22,7 +22,6 @@ public class Bug
     [Required]
     [MaxLength(5000)]
     public string ExpectedResult { get; set; }  //area text
-    
-    public string Attachment { get; set; }
+
     
 }

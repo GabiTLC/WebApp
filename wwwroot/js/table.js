@@ -15,7 +15,7 @@ $(document).ready(function () {
                 "<'float-left' i>" + "<'float-right mt-2' l>" + "<'d-flex justify-content-center mt-5 pl-5 'p>",               
             
             "ajax": {           //ajax api url to access database
-                "url": "/bugs/getall/",
+                "url": "/bugs/getAll",
                 "type": "GET",
                 "datatype": "json"
             },
@@ -24,8 +24,7 @@ $(document).ready(function () {
                 { "data": "summary",
                     "render": function (data) {         //links on summary column
                         //add dynamic link to specific bug page
-                        let link = "https://youtube.com";
-                        return '<a class="text-dark" href="' +link+' ">'+data+'</a>';
+                        return '<a class="text-dark" href="/Bugs/DisplayBug/">'+data+'</a>';
                     },
                     "width":"45%" 
                 },

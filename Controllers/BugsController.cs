@@ -58,6 +58,7 @@ public class BugsController : Controller
 
     #region Api Calls
     
+
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
