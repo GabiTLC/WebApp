@@ -36,6 +36,26 @@ public class BugsController : Controller
         return View(Bugs);
     }
 
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult AddBug()
+    {
+        if (ModelState.IsValid)
+        {
+            if (Bugs.Id == 0)
+            {
+                _db.Bugs.Add(Bugs);
+            }
+            else
+            {
+                _db.Bugs.Update(Bugs);
+            }
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        return View(Bugs);
+    }
+
     #region Api Calls
     
     [HttpGet]
