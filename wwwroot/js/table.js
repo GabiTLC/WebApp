@@ -2,13 +2,14 @@ $(document).ready(function () {
      let id=0;
      $('#example').DataTable({
             pagingType: 'full_numbers',         // first, previous, next and last buttons on the table
-            responsive: true,       //makes the table responsive
-            columnDefs: [
-                { orderable: false, targets: 2 },
-                { orderable: false, targets: 3 },       //disables the ordering functionality on specific columns
-                { orderable: false, targets: 4 },
-                { orderable: false, targets: 5 }
-            ],
+            responsive: true,
+            orderCellsTop: true,//makes the table responsive
+            // columnDefs: [
+            //     { orderable: true, targets: 2 },
+            //     { orderable: true, targets: 3 },       //disables the ordering functionality on specific columns
+            //     { orderable: true, targets: 4 },
+            //     { orderable: true, targets: 5 }
+            // ],
             //the order of the table functionalities
             dom: "<'float-left pt-5' f>" + "<'float-right pt-5' l>" + "<'d-flex justify-content-center pr-5 pb-5 'p>" + "<t>" + 
                 "<'float-left' i>" + "<'float-right mt-2' l>" + "<'d-flex justify-content-center mt-5 pl-5 'p>",               
@@ -39,22 +40,13 @@ $(document).ready(function () {
             "width":"100%",
          
             initComplete: function () {     // selective search implementation on columns [2,End]
-                let i=0;
                 this.api()
-                    .columns()
+                    .columns([2,3,4,5])
                     .every(function () {
                         let column = this;
                         // column interval validation
-                        let select = i===0 || i===1 
-                            ? $('<select style="opacity: 0; pointer-events: none"><option value=""></option></select>')
-                            .appendTo($(column.header()).empty())
-                            .on('change', function () {
-                                let val = $.fn.dataTable.util.escapeRegex($(this).val());
-                                //applying the search
-                                column.search(val ? '^' + val + '$' : '', true, false).draw();
-                            })
-                            : $('<select><option value=""></option></select>')
-                            .appendTo($(column.header()).empty())
+                        let select =  $('<select><option value=""></option></select>')
+                            .appendTo($("#example thead tr:eq(1) th").eq(column.index()).empty())
                             .on('change', function () {
                                 let val = $.fn.dataTable.util.escapeRegex($(this).val());
                                 //applying the search
@@ -69,8 +61,11 @@ $(document).ready(function () {
                             .each(function (d) {
                                 select.append('<option value="' + d + '">' + d + '</option>');
                             });
-                        i++;
+                        
                     });
+                
            },
     });
+     
+    
 });
