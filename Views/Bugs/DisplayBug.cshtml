@@ -10,15 +10,10 @@
 <br/>
 <br/>
 <br/>
-<h2 class="text-info text-dark">@(Model.Id!=0 ? "Edit" : "Add") Bug</h2>
+<h2 class="text-info text-dark">Edit Bug</h2>
 <div class="pt-2 pl-0">
     <form method="get" asp-controller="Bugs" asp-action="DisplayBug">
-        @if (Model.Id != 0)
-        {
-            <input type="hidden" asp-for="Id"/>
-        }
-        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
-        
+      
         <div class="gridBtn">
             
             <div class="form-group ml-2">
@@ -26,8 +21,7 @@
                     <label asp-for="Summary"></label> @*add style*@
                 </div>
                 <div class="col-10">
-                    <input asp-for="Summary" class="form-control"/>
-                    <span asp-validation-for="Summary" class="text-danger"></span>
+                    <input readonly="readonly" asp-for="Summary" class="form-control"/>
                 </div>
             </div>
             
@@ -52,8 +46,7 @@
                         <label asp-for="Description"></label> @*add style*@
                     </div>
                     <div class="col-12">
-                        <textarea rows="4" cols="40" type="text" asp-for="Description" class="form-control"></textarea>
-                        <span asp-validation-for="Description" class="text-danger"></span>
+                        <textarea readonly="readonly" rows="4" cols="40" type="text" asp-for="Description" class="form-control"></textarea>
                     </div>
                 </div>
                 <div class="form-group">
@@ -61,7 +54,9 @@
                         <label asp-for="StepsToRepo"></label> @*add style*@
                     </div>
                     <div class="col-12">
-                        <textarea rows="5" cols="40" asp-for="StepsToRepo" class="form-control"></textarea>
+                        <textarea readonly="readonly" rows="5" cols="40"
+                            asp-for="StepsToRepo" class="form-control">
+                        </textarea>
                     </div>
                 </div>
                 <div class="form-group">
@@ -69,8 +64,9 @@
                         <label asp-for="ExpectedResult"></label> @*add style*@
                     </div>
                     <div class="col-12">
-                        <textarea rows="2" cols="40" asp-for="ExpectedResult" class="form-control"></textarea>
-                        <span asp-validation-for="ExpectedResult" class="text-danger"></span>
+                        <textarea readonly="readonly" rows="2" cols="40"
+                            asp-for="ExpectedResult" class="form-control">
+                        </textarea>
                     </div>
                 </div>
             </div>
@@ -81,8 +77,8 @@
                     <div>
                         <label asp-for="Type"></label> @*add style*@
                     </div>
-                    <div class="select">
-                        <select asp-for="Type" class="form-control sel">
+                    <div class="ss" >
+                        <select asp-for="Type" class="form-control sel" disabled="disabled">
                             <option value="">Select Type...</option>
                             <option value="Game System">Game System</option>
                             <option value="Game Design">Game Design</option>
@@ -97,15 +93,14 @@
                         </select>
                         <span class="focus"></span>
                     </div>
-                    <span asp-validation-for="Type" class="text-danger "></span>
                 </div>
                 @* PRIORITY      *@
                 <div class="form-group">
                     <div>
                         <label asp-for="Priority"></label> @*add style*@
                     </div>
-                    <div class="select">
-                        <select asp-for="Priority" class="form-control sel">
+                    <div class="ss">
+                        <select asp-for="Priority" class="form-control sel" disabled="disabled">
                             <option value="">Select Priority...</option>
                             <option value="Very High">Very High</option>
                             <option value="High">High</option>
@@ -115,15 +110,14 @@
                         </select>
                         <span class="focus"></span>
                     </div>
-                    <span asp-validation-for="Priority" class="text-danger "></span>
                 </div>
                 @* SEVERITY                          *@
                 <div class="form-group">
                     <div>
                         <label asp-for="Severity"></label> @*add style*@
                     </div>
-                    <div class="select">
-                        <select  asp-for="Severity" class="form-control sel">
+                    <div class="ss">
+                        <select  asp-for="Severity" class="form-control sel" disabled="disabled">
                             <option value="">Select Severity...</option>
                             <option value="S">S</option>
                             <option value="A">A</option>
@@ -140,8 +134,8 @@
                     <div>
                         <label asp-for="Platform"></label> @*add style*@
                     </div>
-                    <div class="select">
-                        <select asp-for="Platform" class="form-control sel">
+                    <div class="ss">
+                        <select asp-for="Platform" class="form-control sel" disabled="disabled">
                             <option value="">Select Platform...</option>
                             <option value="All">All</option>
                             <option value="PC">PC</option>
@@ -158,11 +152,9 @@
             </div>
             
             <div class="right-space">
-                
             </div>
             
         </div>
-        
     </form>
 </div>
 

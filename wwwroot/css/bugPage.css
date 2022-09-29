@@ -30,6 +30,10 @@ select {
 .sel{
     border: none;
 }
+.ss{  /*DISABLED COLOR FIX*/
+    background-color: #e8ebee;
+    max-width: 270px;
+}
 .sel:focus {
     box-shadow: none;
 }

@@ -4,3 +4,7 @@
 div.id {
     width: 80%;
 }
+/*DO NOT DISPLAY TAGGED COLUMNS*/
+.da{   
+    display: none;
+}
