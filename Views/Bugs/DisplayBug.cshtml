@@ -46,7 +46,9 @@
                         <label asp-for="Description"></label> @*add style*@
                     </div>
                     <div class="col-12">
-                        <textarea readonly="readonly" rows="4" cols="40" type="text" asp-for="Description" class="form-control"></textarea>
+                        <textarea readonly="readonly" rows="4" cols="40" type="text" asp-for="Description" class="form-control"
+                            
+                        ></textarea>
                     </div>
                 </div>
                 <div class="form-group">
@@ -119,12 +121,29 @@
                     <div class="ss">
                         <select  asp-for="Severity" class="form-control sel" disabled="disabled">
                             <option value="">Select Severity...</option>
-                            <option value="S">S</option>
-                            <option value="A">A</option>
-                            <option value="B">B</option>
-                            <option value="C">C</option>
-                            <option value="D">D</option>
-                            <option value="F">F</option>
+                            <option value="Blocker">Blocker</option>
+                            <option value="Critical">Critical</option>
+                            <option value="Major">Major</option>
+                            <option value="Minor">Minor</option>
+                            <option value="Trivial">Trivial</option>
+                        </select>
+                        <span class="focus"></span>
+                    </div>
+                </div>
+                @* REPRORATE *@
+                <div class="form-group">
+                    <div>
+                        <label asp-for="ReproRate"></label> @*add style*@
+                    </div>
+                    <div class="ss">
+                        <select  asp-for="ReproRate" class="form-control sel" disabled="disabled">
+                            <option value="">Select Repro-Rate...</option>
+                            <option value="100%">100%</option>
+                            <option value="80%">80%</option>
+                            <option value="60%">60%</option>
+                            <option value="40%">40%</option>
+                            <option value="20%">20%</option>
+                            <option value="1%">1%</option>
                         </select>
                         <span class="focus"></span>
                     </div>
@@ -149,6 +168,40 @@
                         <span class="focus"></span>
                     </div>
                 </div>
+                @* STATUS *@
+                <div class="form-group">
+                    <div>
+                        <label asp-for="Status"></label> @*add style*@
+                    </div>
+                    <div class="ss">
+                        <select  asp-for="Status" class="form-control sel" disabled="disabled">
+                            <option value="">Select Status...</option>
+                            <option value="Open">Open</option>
+                            <option value="Fixed">Fixed</option>
+                            <option value="Reopen">Reopen</option>
+                            <option value="Regress">Regress</option>
+                            <option value="Duplicate">Duplicate</option>
+                            <option value="Not A Bug">Not A Bug</option>
+                        </select>
+                        <span class="focus"></span>
+                        
+                    </div>
+                </div>
+                @* CLOSED *@
+                <div class="form-group">
+                    <div>
+                        <label asp-for="Closed"></label> @*add style*@
+                    </div>
+                    <div class="ss">
+                        <select  asp-for="Closed" class="form-control sel" disabled="disabled">
+                            <option value="false">False</option>
+                            <option value="true">True</option>
+                        </select>
+                        <span class="focus"></span>
+                                        
+                    </div>
+                </div>
+                
             </div>
             
             <div class="right-space">

@@ -4,6 +4,7 @@ $(document).ready(function () {
             pagingType: 'full_numbers',         // first, previous, next and last buttons on the table
             responsive: true,  //makes the table responsive
             orderCellsTop: true,
+            autoWidth: false,
             //the order of the table functionalities
             dom: "<'float-left pt-5' f>" + "<'float-right pt-5' l>" + "<'d-flex justify-content-center pr-5 pb-5 'p>" + "<t>" + 
                 "<'float-left' i>" + "<'float-right mt-2' l>" + "<'d-flex justify-content-center mt-5 pl-5 'p>",               
@@ -19,17 +20,20 @@ $(document).ready(function () {
                                 id=data; //cashing the id value for later uses
                             return data;
                         },
-                    "width":"5%" },
+                    "width":"3%" },
                 { "data": "summary",
                     "render": function (data) {         //links on summary column
                         return `<a class="text-dark" href="/Bugs/DisplayBug?id=${id}">${data}</a>`;
                     },
-                    "width":"45%" 
+                    "width":"30%" 
                 },
-                { "data": "type", "width":"15%" },
-                { "data": "priority", "width":"15%" },
-                { "data": "severity", "width":"10%" },
-                { "data": "platform", "width":"10%" },
+                { "data": "type", "width":"20%" },
+                { "data": "priority", "width":"12%" },
+                { "data": "severity", "width":"11%" },
+                { "data": "reproRate", "width":"8%" },
+                { "data": "platform", "width":"11%" },
+                { "data": "status", "width":"12%"},
+                { "data": "closed", "width":"8%"},
             ],
             "width":"100%",
          

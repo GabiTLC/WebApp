@@ -9,7 +9,22 @@
     --select-focus: rgb(158, 218, 255);
     --select-arrow: var(--select-border);
 }
-
+::-webkit-input-placeholder {
+    font-size: 12px;
+    color: white;
+}
+::-moz-placeholder {
+    font-size: 12px;
+    color: white;
+}
+:-ms-input-placeholder {
+    font-size: 13px;
+    color: white;
+}
+::placeholder {
+    color: white;
+    font-size: 12px;
+}
 select {
 
     appearance: none;

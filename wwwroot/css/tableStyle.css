@@ -1,8 +1,15 @@
 ﻿div.container {
-    width: 80%;
+    width: 100%;
 }
 div.id {
-    width: 80%;
+    width: 100%;
+}
+table{
+    width: 100%;
+    clear: both;
+    border-collapse: collapse;
+    table-layout: fixed;
+    word-wrap:break-word;
 }
 /*DO NOT DISPLAY TAGGED COLUMNS*/
 .da{   

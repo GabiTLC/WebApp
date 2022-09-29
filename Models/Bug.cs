@@ -7,21 +7,37 @@ public class Bug
     [Key]
     public int Id { get; set; }
     [Required]
-    public string Summary { get; set; }
+    [MaxLength(150)]
+    public string Summary { get; set; } = null!;
+
     [Required]
-    public string Type { get; set; } //dropdown
+    public string Type { get; set; } = null!;
     [Required]
-    public string Priority { get; set; } //dropdown
-    public char Severity { get; set; }   //dropdown
-    public string Platform { get; set; }    //dropdown
+    public string Priority { get; set; } = null!;
     [Required]
-    [MaxLength(5000)]
-    public string Description { get; set; } //areatext
-    public string StepsToRepo { get; set; }
+    public string Severity { get; set; } = null!;
+
+    [Required]
+    public string ReproRate { get; set; } = null!;
     
     [Required]
-    [MaxLength(5000)]
-    public string ExpectedResult { get; set; }  //area text
+    public string Platform { get; set; } = null!;
 
+    [Required]
+    [MaxLength(5000)]
+    public string Status { get; set; } = null!;
+
+    public bool Closed { get; set; }
+    [Required]
+    [MaxLength(5000)]
+    public string Description { get; set; } = null!;
+    [Required]
+    [MaxLength(5000)]
+    public string StepsToRepo { get; set; } = null!;
+
+    [Required]
+    [MaxLength(5000)]
+    public string ExpectedResult { get; set; } = null!;
+    
     
 }

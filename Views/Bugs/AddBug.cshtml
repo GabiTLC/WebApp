@@ -31,7 +31,8 @@
                     <label asp-for="Summary"></label> @*add style*@
                 </div>
                 <div class="col-10">
-                    <input asp-for="Summary" class="form-control"/>
+                    <input asp-for="Summary" class="form-control"
+                           placeholder="A short description of the bug.."/>
                     <span asp-validation-for="Summary" class="text-danger"></span>
                 </div>
             </div>
@@ -39,12 +40,12 @@
             <div class="Buttons">
                 <div class="pb-2">
                     <button type="submit" class="btn btn-success form-control" formmethod="post">
-                        @(Model.Id != 0 ? "Confirm Edit" : "Create")
+                        @(Model.Id != 0 ? "Confirm" : "Create")
                     </button>
                 </div>
                 
                 <div>
-                    <a asp-action="Index" class="btn btn-danger form-control">Back to List</a>
+                    <a asp-action="Index" class="btn btn-danger form-control">Back</a>
                 </div>
             </div>
             
@@ -58,7 +59,12 @@
                         <label asp-for="Description"></label> @*add style*@
                     </div>
                     <div class="col-12">
-                        <textarea rows="4" cols="40" type="text" asp-for="Description" class="form-control"></textarea>
+                        <textarea rows="4" cols="40" type="text" asp-for="Description" class="form-control"
+                                        placeholder="Bug description helps the developer to understand the bug.
+It describes the problem encountered.
+Specify the version on which the bug occurs...
+                                        "
+                        ></textarea>
                         <span asp-validation-for="Description" class="text-danger"></span>
                     </div>
                 </div>
@@ -67,7 +73,13 @@
                         <label asp-for="StepsToRepo"></label> @*add style*@
                     </div>
                     <div class="col-12">
-                        <textarea rows="5" cols="40" asp-for="StepsToRepo" class="form-control"></textarea>
+                        <textarea rows="5" cols="40" asp-for="StepsToRepo" class="form-control"
+                            placeholder="1.First Step
+2.Second step
+...
+Rezult:"
+></textarea>
+                        <span asp-validation-for="StepsToRepo" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="form-group">
@@ -75,7 +87,9 @@
                         <label asp-for="ExpectedResult"></label> @*add style*@
                     </div>
                     <div class="col-12">
-                        <textarea rows="2" cols="40" asp-for="ExpectedResult" class="form-control"></textarea>
+                        <textarea rows="2" cols="40" asp-for="ExpectedResult" class="form-control"
+placeholder="It is good practice to outline what the outcome of the test is and what the user should expect..."
+></textarea>
                         <span asp-validation-for="ExpectedResult" class="text-danger"></span>
                     </div>
                 </div>
@@ -131,15 +145,34 @@
                     <div class="select">
                         <select  asp-for="Severity" class="form-control sel">
                             <option value="">Select Severity...</option>
-                            <option value="S">S</option>
-                            <option value="A">A</option>
-                            <option value="B">B</option>
-                            <option value="C">C</option>
-                            <option value="D">D</option>
-                            <option value="F">F</option>
+                            <option value="Blocker">Blocker</option>
+                            <option value="Critical">Critical</option>
+                            <option value="Major">Major</option>
+                            <option value="Minor">Minor</option>
+                            <option value="Trivial">Trivial</option>
                         </select>
                         <span class="focus"></span>
                     </div>
+                    <span asp-validation-for="Severity" class="text-danger "></span>
+                </div>
+                @* REPRORATE *@
+                <div class="form-group">
+                    <div>
+                        <label asp-for="ReproRate"></label> @*add style*@
+                    </div>
+                    <div class="select">
+                        <select  asp-for="ReproRate" class="form-control sel">
+                            <option value="">Select Repro-Rate...</option>
+                            <option value="100%">100%</option>
+                            <option value="80%">80%</option>
+                            <option value="60%">60%</option>
+                            <option value="40%">40%</option>
+                            <option value="20%">20%</option>
+                            <option value="1%">1%</option>
+                        </select>
+                        <span class="focus"></span>
+                    </div>
+                    <span asp-validation-for="ReproRate" class="text-danger "></span>
                 </div>
                 @* PLATFORM      *@
                 <div class="form-group">
@@ -160,6 +193,40 @@
                         </select>
                         <span class="focus"></span>
                     </div>
+                    <span asp-validation-for="Platform" class="text-danger "></span>
+                </div>
+                @* STATUS *@
+                <div class="form-group">
+                    <div>
+                        <label asp-for="Status"></label> @*add style*@
+                    </div>
+                    <div class="select">
+                        <select  asp-for="Status" class="form-control sel">
+                            <option value="">Select Status...</option>
+                            <option value="Open">Open</option>
+                            <option value="Fixed">Fixed</option>
+                            <option value="Reopen">Reopen</option>
+                            <option value="Regress">Regress</option>
+                            <option value="Duplicate">Duplicate</option>
+                            <option value="Not A Bug">Not A Bug</option>
+                        </select>
+                        <span class="focus"></span>
+                    </div>
+                    <span asp-validation-for="Status" class="text-danger "></span>
+                </div>
+                @* CLOSED *@
+                <div class="form-group">
+                    <div>
+                        <label asp-for="Closed"></label> @*add style*@
+                        </div>
+                    <div class="select">
+                        <select  asp-for="Closed" class="form-control sel">
+                            <option value="false">False</option>
+                            <option value="true">True</option>
+                        </select>
+                        <span class="focus"></span>
+                    </div>
+                    <span asp-validation-for="Closed" class="text-danger "></span>
                 </div>
             </div>
             
