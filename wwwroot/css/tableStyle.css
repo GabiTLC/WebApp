@@ -18,6 +18,9 @@ table{
     display: none;
     
 }
+td.highlight {
+    background-color: whitesmoke !important;
+}
 .grid{
     display: grid;
     grid-template-columns: 49% 49%;

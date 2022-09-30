@@ -11,6 +11,10 @@ $(document).ready(function () {
             //ordering priority settings
             "columnDefs": [
             {
+                 "sType": 'type-grade',
+                 targets: 2
+            },
+            {
                  "sType": 'priority-grade',
                  targets: 3
             },
@@ -62,10 +66,10 @@ $(document).ready(function () {
                 { "data": "type", "width":"20%" },
                 { "data": "priority", "width":"12%" },
                 { "data": "severity", "width":"11%" },
-                { "data": "reproRate", "width":"8%" },
+                { "data": "reproRate", "width":"9%" },
                 { "data": "platform", "width":"11%" },
                 { "data": "status", "width":"12%"},
-                { "data": "state", "width":"8%"},
+                { "data": "state", "width":"9%"},
             ],
             "width":"100%",
             
@@ -83,28 +87,149 @@ $(document).ready(function () {
                                 //applying the search
                                 column.search(val ? '^' + val + '$' : '', true, false).draw();
                             })
-                        ;
-                        //sorting the table according to the search
-                        column
-                            .data()
-                            .unique()
-                            .sort()
-                            .each(function (d) {
-                                select.append('<option value="' + d + '">' + d + '</option>');
-                            });
+                        //#region Selective search dropdown custom sorting
+
+                        // Type column
+                        if (column.index() === 2) {
+                            let type = [];
+                            let typeSelectOrder = ['Game System', 'Game Design', 'Level Design',
+                                'Character Design', 'Graphics', 'Texture/Visual', 'UI/UX',
+                                'Animation', 'Sound', 'Performance', 'Networking', 'Misc'];
+
+                            // Get unique data from the column
+                            column.data().unique().each( function (d) {
+                                type.push(d);
+                            } );
+
+                            // Loop the type order and if in data add to select list
+                            $.each(typeSelectOrder, function( index, value ) {
+                                if (type.includes(value)) {
+                                    select.append( '<option value="'+value+'">'+value+'</option>' );
+                                }
+                            } );
+
+                        }
+                        // Priority column
+                        else if(column.index() === 3) {
+                            let priorities = [];
+                            let prioritiesSelectOrder = ['Very High', 'High', 'Medium', 'Low', 'Very Low'];
+
+                            // Get unique data from the column
+                            column.data().unique().each( function (d) {
+                                priorities.push(d);
+                            } );
+
+                            // Loop the priorities order and if in data add to select list
+                            $.each(prioritiesSelectOrder, function( index, value ) {
+                                if (priorities.includes(value)) {
+                                    select.append( '<option value="'+value+'">'+value+'</option>' );
+                                }
+                            } );
+
+                        }
+                        // ReproRate column
+                        else if(column.index() === 5){
+                            let reproRate = [];
+                            let reproRateSelectOrder = ['100%', '80%', '60%', '40%', '20%', '1%'];
+
+                            // Get unique data from the column
+                            column.data().unique().each( function (d) {
+                                reproRate.push(d);
+                            } );
+
+                            // Loop the reproRate order and if in data add to select list
+                            $.each(reproRateSelectOrder, function( index, value ) {
+                                if (reproRate.includes(value)) {
+                                    select.append( '<option value="'+value+'">'+value+'</option>' );
+                                }
+                            } );
+                        }
+                        // Platform column
+                        else if(column.index() === 6){
+                            let platform = [];
+                            let platformSelectOrder = ['All', 'PC', 'XB', 'PS', 'AnDr', 'iOS', 'NTD', 'WGL'];
+
+                            // Get unique data from the column
+                            column.data().unique().each( function (d) {
+                                platform.push(d);
+                            } );
+
+                            // Loop the platform order and if in data add to select list
+                            $.each(platformSelectOrder, function( index, value ) {
+                                if (platform.includes(value)) {
+                                    select.append( '<option value="'+value+'">'+value+'</option>' );
+                                }
+                            } );
+                        }
+                        // Status column
+                        else if(column.index() === 7){
+                            let status = [];
+                            let statusSelectOrder = ['Open', 'Reopen', 'Regress', 'Fixed', 'Duplicate', 'Not A Bug'];
+
+                            // Get unique data from the column
+                            column.data().unique().each( function (d) {
+                                status.push(d);
+                            } );
+
+                            // Loop the status order and if in data add to select list
+                            $.each(statusSelectOrder, function( index, value ) {
+                                if (status.includes(value)) {
+                                    select.append( '<option value="'+value+'">'+value+'</option>' );
+                                }
+                            } );
+                        }
+                        // Other columns
+                        else {
+                            column.data().unique().sort().each( function (d) {
+                                select.append( '<option value="'+d+'">'+d+'</option>' );
+                            } );
+                        }
                         
+                        //#endregion
                     });
                 
             },
-            
-            rowCallback: function ( row, data ) {
-                // Set the checked state of the checkbox in the table
-                return $('input.active-edit', row).prop( 'checked', data.close === "true" );
-            },
-     
      });
+     
+     //highlight for columns
+     $('#example tbody').on('mouseenter', 'td', function () {
+        let colIdx = table.cell(this).index().column;
+
+        $(table.cells().nodes()).removeClass('highlight');
+        $(table.column(colIdx).nodes()).addClass('highlight');
+     });
+     
      //sort order by custom rules
-    $.fn.dataTable.ext.type.order['priority-grade-pre'] = function (d) {
+     $.fn.dataTable.ext.type.order['type-grade-pre'] = function (d) {
+        switch (d) {
+            case 'Game System':
+                return 1;
+            case 'Game Design':
+                return 2;
+            case 'Level Design':
+                return 3;
+            case 'Character Design':
+                return 4;
+            case 'Graphics':
+                return 5;
+            case 'Texture/Visual':
+                return 6;
+            case 'UI/UX':
+                return 7;
+            case 'Animation':
+                return 8;
+            case 'Sound':
+                return 9;
+            case 'Performance':
+                return 91;
+            case 'Networking':
+                return 92;
+            case 'Misc':
+                return 93;
+        }
+        return 0;
+    };
+     $.fn.dataTable.ext.type.order['priority-grade-pre'] = function (d) {
         switch (d) {
             case 'Very High':
                 return 1;
@@ -119,7 +244,7 @@ $(document).ready(function () {
         }
         return 0;
     };
-    $.fn.dataTable.ext.type.order['severity-grade-pre'] = function (d) {
+     $.fn.dataTable.ext.type.order['severity-grade-pre'] = function (d) {
         switch (d) {
             case 'Blocker':
                 return 1;
@@ -134,7 +259,7 @@ $(document).ready(function () {
         }
         return 0;
     };
-    $.fn.dataTable.ext.type.order['repro-grade-pre'] = function (d) {
+     $.fn.dataTable.ext.type.order['repro-grade-pre'] = function (d) {
         switch (d) {
             case '100%':
                 return 1;
@@ -151,7 +276,7 @@ $(document).ready(function () {
         }
         return 0;
     };
-    $.fn.dataTable.ext.type.order['platform-grade-pre'] = function (d) {
+     $.fn.dataTable.ext.type.order['platform-grade-pre'] = function (d) {
         switch (d) {
             case 'All':
                 return 1;
@@ -165,14 +290,14 @@ $(document).ready(function () {
                 return 5;
             case 'iOS':
                 return 6;
-            case 'WGB':
+            case 'WGL':
                 return 7;
             case 'NTD':
                 return 8;
         }
         return 0;
     };
-    $.fn.dataTable.ext.type.order['status-grade-pre'] = function (d) {
+     $.fn.dataTable.ext.type.order['status-grade-pre'] = function (d) {
         switch (d) {
             case 'Open':
                 return 1;
@@ -208,7 +333,7 @@ $(document).ready(function () {
      });
     
      //first chart settings
-     var chart1 = Highcharts.chart('chart1', {
+     let chart1 = Highcharts.chart('chart1', {
         chart: {
             type: 'pie',
             plotBackgroundColor: '#bb0404',
@@ -220,7 +345,7 @@ $(document).ready(function () {
             },
         },
         title: {
-            text: '<span style=""> Bug Count Per Type</span>',                //add style
+            text: 'Bug Count Per Type',                //add style
         },
         tooltip: {
             headerFormat: '',
@@ -249,8 +374,8 @@ $(document).ready(function () {
         ],
     });
 
-     //second chat settings
-     var chart2 = Highcharts.chart('chart2', {
+     //second chart settings
+     let chart2 = Highcharts.chart('chart2', {
         chart: {
             type: 'pie',
             plotBackgroundColor: '#bb0404',
@@ -301,7 +426,7 @@ $(document).ready(function () {
 
 //pie chart custom function
 function chartData(table,column) {
-    var counts = {};
+    let counts = {};
 
     // Count the number of entries for each position
     table
