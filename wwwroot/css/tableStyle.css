@@ -18,6 +18,11 @@ table{
     display: none;
     
 }
+.grid{
+    display: grid;
+    grid-template-columns: 49% 49%;
+    gap: 1rem;
+}
 
 /*.highcharts-pie-series .highcharts-point {*/
 /*    stroke: #ede;*/

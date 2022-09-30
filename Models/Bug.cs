@@ -27,7 +27,8 @@ public class Bug
     [MaxLength(5000)]
     public string Status { get; set; } = null!;
 
-    public bool Closed { get; set; }
+    public string State { get; set; } = null!;
+
     [Required]
     [MaxLength(5000)]
     public string Description { get; set; } = null!;

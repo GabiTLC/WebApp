@@ -2,7 +2,6 @@
 
 <link rel="stylesheet" href="~/css/bugPage.css" asp-append-version="true"/>
 
-
 @{
     ViewData["Title"] = "Add Bug";
 }
@@ -188,27 +187,27 @@
                         
                     </div>
                 </div>
-                @* CLOSED *@
+                @* STATE *@
                 <div class="form-group">
                     <div>
-                        <label asp-for="Closed"></label> @*add style*@
+                        <label asp-for="State"></label> @*add style*@
                     </div>
                     <div class="ss">
-                        <select  asp-for="Closed" class="form-control sel" disabled="disabled">
-                            <option value="false">False</option>
-                            <option value="true">True</option>
+                        <select asp-for="State" class="form-control sel" disabled="disabled">
+                            <option value="Active">Active</option>
+                            <option value="Closed">Closed</option>
                         </select>
                         <span class="focus"></span>
-                                        
                     </div>
                 </div>
-                
+
             </div>
             
             <div class="right-space">
             </div>
             
         </div>
+        
     </form>
 </div>
 
@@ -216,4 +215,3 @@
 {
     <partial name="_ValidationScriptsPartial"/>
 }
-

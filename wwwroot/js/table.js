@@ -65,11 +65,10 @@ $(document).ready(function () {
                 { "data": "reproRate", "width":"8%" },
                 { "data": "platform", "width":"11%" },
                 { "data": "status", "width":"12%"},
-                { "data": "closed", "width":"8%"},
+                { "data": "state", "width":"8%"},
             ],
-         
             "width":"100%",
-         
+            
             // selective search implementation on columns [2,End]
             initComplete: function () {     
                 this.api()
@@ -96,7 +95,12 @@ $(document).ready(function () {
                         
                     });
                 
-           },
+            },
+            
+            rowCallback: function ( row, data ) {
+                // Set the checked state of the checkbox in the table
+                return $('input.active-edit', row).prop( 'checked', data.close === "true" );
+            },
      
      });
      //sort order by custom rules

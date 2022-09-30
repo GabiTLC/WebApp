@@ -120,7 +120,7 @@ placeholder="It is good practice to outline what the outcome of the test is and 
                     </div>
                     <span asp-validation-for="Type" class="text-danger "></span>
                 </div>
-                @* PRIORITY      *@
+                @* PRIORITY *@
                 <div class="form-group">
                     <div>
                         <label asp-for="Priority"></label> @*add style*@
@@ -138,7 +138,7 @@ placeholder="It is good practice to outline what the outcome of the test is and 
                     </div>
                     <span asp-validation-for="Priority" class="text-danger "></span>
                 </div>
-                @* SEVERITY                          *@
+                @* SEVERITY  *@
                 <div class="form-group">
                     <div>
                         <label asp-for="Severity"></label> @*add style*@
@@ -175,7 +175,7 @@ placeholder="It is good practice to outline what the outcome of the test is and 
                     </div>
                     <span asp-validation-for="ReproRate" class="text-danger "></span>
                 </div>
-                @* PLATFORM      *@
+                @* PLATFORM *@
                 <div class="form-group">
                     <div>
                         <label asp-for="Platform"></label> @*add style*@
@@ -215,19 +215,18 @@ placeholder="It is good practice to outline what the outcome of the test is and 
                     </div>
                     <span asp-validation-for="Status" class="text-danger "></span>
                 </div>
-                @* CLOSED *@
+                @* STATE *@
                 <div class="form-group">
                     <div>
-                        <label asp-for="Closed"></label> @*add style*@
-                        </div>
+                        <label asp-for="State"></label> @*add style*@
+                    </div>
                     <div class="select">
-                        <select  asp-for="Closed" class="form-control sel">
-                            <option value="false">False</option>
-                            <option value="true">True</option>
+                        <select  asp-for="State" class="form-control sel">
+                            <option value="Active">Active</option>
+                            <option value="Closed">Closed</option>
                         </select>
                         <span class="focus"></span>
                     </div>
-                    <span asp-validation-for="Closed" class="text-danger "></span>
                 </div>
             </div>
             
@@ -235,6 +234,7 @@ placeholder="It is good practice to outline what the outcome of the test is and 
             </div>
             
         </div>
+    
     </form>
 </div>
 
