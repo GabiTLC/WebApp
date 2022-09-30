@@ -1,28 +1,60 @@
 $(document).ready(function () {
      let id=0;
      let table = $('#example').DataTable({
-            pagingType: 'full_numbers',         // first, previous, next and last buttons on the table
-            responsive: true,  //makes the table responsive
+            // first, previous, next and last buttons on the table
+            pagingType: 'full_numbers',
+            //makes the table responsive
+            responsive: true,
             orderCellsTop: true,
             autoWidth: false,
+         
+            //ordering priority settings
+            "columnDefs": [
+            {
+                 "sType": 'priority-grade',
+                 targets: 3
+            },
+            {
+                 "sType": 'severity-grade',
+                 targets: 4
+            }, 
+            {
+                 "sType": 'repro-grade',
+                 targets: 5
+            }, 
+            {
+                "sType": 'platform-grade',
+                targets: 6
+            },
+            {
+                "sType": 'status-grade',
+                targets: 7
+            },
+            ],
+            
             //the order of the table functionalities
             dom: "<'float-left pt-5' f>" + "<'float-right pt-5' l>" + "<'d-flex justify-content-center pr-5 pb-5 'p>" + "<t>" + 
-                "<'float-left' i>" + "<'float-right mt-2' l>" + "<'d-flex justify-content-center mt-5 pl-5 'p>",               
+                "<'float-left' i>" + "<'float-right mt-2' l>" + "<'d-flex justify-content-center mt-5 pl-5 'p>",
             
-            "ajax": {           //ajax api url to access database
+            //ajax api url to access database
+            "ajax": {
                 "url": "/bugs/getAll",
                 "type": "GET",
                 "datatype": "json"
             },
-            "columns": [//columns width and additional column specific functionalities
+            
+            //columns width and additional column specific functionalities
+            "columns": [
                 { "data": "id",
+                    //cashing the id value for later uses
                         "render":function (data) {
-                                id=data; //cashing the id value for later uses
+                                id=data; 
                             return data;
                         },
                     "width":"3%" },
                 { "data": "summary",
-                    "render": function (data) {         //links on summary column
+                    //links on summary column
+                    "render": function (data) {         
                         return `<a class="text-dark" href="/Bugs/DisplayBug?id=${id}">${data}</a>`;
                     },
                     "width":"30%" 
@@ -35,16 +67,18 @@ $(document).ready(function () {
                 { "data": "status", "width":"12%"},
                 { "data": "closed", "width":"8%"},
             ],
+         
             "width":"100%",
          
-            initComplete: function () {     // selective search implementation on columns [2,End]
+            // selective search implementation on columns [2,End]
+            initComplete: function () {     
                 this.api()
                     .columns()
                     .every(function () {
                         let column = this;
                         // column interval validation
                         let select =  $('<select><option value=""></option></select>')
-                            .appendTo($("#example thead tr:eq(1) th").eq(column.index()).empty())
+                            .appendTo($("#example thead tr:eq(1) th").eq(column.index()).empty()) //append only in lower tablehead
                             .on('change', function () {
                                 let val = $.fn.dataTable.util.escapeRegex($(this).val());
                                 //applying the search
@@ -65,6 +99,94 @@ $(document).ready(function () {
            },
      
      });
+     //sort order by custom rules
+    $.fn.dataTable.ext.type.order['priority-grade-pre'] = function (d) {
+        switch (d) {
+            case 'Very High':
+                return 1;
+            case 'High':
+                return 2;
+            case 'Medium':
+                return 3;
+            case 'Low':
+                return 4;
+            case 'Very Low':
+                return 5;
+        }
+        return 0;
+    };
+    $.fn.dataTable.ext.type.order['severity-grade-pre'] = function (d) {
+        switch (d) {
+            case 'Blocker':
+                return 1;
+            case 'Critical':
+                return 2;
+            case 'Major':
+                return 3;
+            case 'Minor':
+                return 4;
+            case 'Trivial':
+                return 5;
+        }
+        return 0;
+    };
+    $.fn.dataTable.ext.type.order['repro-grade-pre'] = function (d) {
+        switch (d) {
+            case '100%':
+                return 1;
+            case '80%':
+                return 2;
+            case '60%':
+                return 3;
+            case '40%':
+                return 4;
+            case '20%':
+                return 5;
+            case '1%':
+                return 6;
+        }
+        return 0;
+    };
+    $.fn.dataTable.ext.type.order['platform-grade-pre'] = function (d) {
+        switch (d) {
+            case 'All':
+                return 1;
+            case 'PC':
+                return 2;
+            case 'XB':
+                return 3;
+            case 'PS':
+                return 4;
+            case 'AnDr':
+                return 5;
+            case 'iOS':
+                return 6;
+            case 'WGB':
+                return 7;
+            case 'NTD':
+                return 8;
+        }
+        return 0;
+    };
+    $.fn.dataTable.ext.type.order['status-grade-pre'] = function (d) {
+        switch (d) {
+            case 'Open':
+                return 1;
+            case 'Reopen':
+                return 2;
+            case 'Regress':
+                return 3;
+            case 'Fixed':
+                return 4;
+            case 'Duplicate':
+                return 5;
+            case 'Not A Bug':
+                return 6;
+        }
+        return 0;
+    };
+    
+     //color tint on pie chart
      Highcharts.setOptions({
         colors: Highcharts.map(Highcharts.getOptions().colors, function (color) {
             return {
@@ -80,7 +202,8 @@ $(document).ready(function () {
             };
         })
      });
-
+    
+     //first chart settings
      var chart1 = Highcharts.chart('chart1', {
         chart: {
             type: 'pie',
@@ -122,6 +245,7 @@ $(document).ready(function () {
         ],
     });
 
+     //second chat settings
      var chart2 = Highcharts.chart('chart2', {
         chart: {
             type: 'pie',
@@ -162,14 +286,16 @@ $(document).ready(function () {
             },
         ],
     });
-    // On each draw, update the data in the chart
-    
+     
+     // On each draw, update the data in the chart
      table.on('draw', function () {
         chart1.series[0].setData(chartData(table,2));
         chart2.series[0].setData(chartData(table,7));
-    });
+     });
     
 });
+
+//pie chart custom function
 function chartData(table,column) {
     var counts = {};
 
