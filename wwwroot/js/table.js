@@ -3,6 +3,14 @@ $(document).ready(function () {
      let table = $('#example').DataTable({
             // first, previous, next and last buttons on the table
             pagingType: 'full_numbers',
+            language: {
+                lengthMenu: 'Show _MENU_ bugs per page',
+                searchPlaceholder: "Find a bug...",
+                zeroRecords: 'No bugs out there - nothing to do here..',
+                infoEmpty: 'No database available',
+                search: "",
+                info:"Showing _START_ to _END_ of _TOTAL_ total bugs",
+            },
             //makes the table responsive
             responsive: true,
             orderCellsTop: true,
@@ -35,6 +43,8 @@ $(document).ready(function () {
                 targets: 7
             },
             ],
+
+            
             
             //the order of the table functionalities
             dom: "<'float-left pt-5' f>" + "<'float-right pt-5' l>" + "<'d-flex justify-content-center pr-5 pb-5 'p>" + "<t>" + 
@@ -194,7 +204,7 @@ $(document).ready(function () {
      //highlight for columns
      $('#example tbody').on('mouseenter', 'td', function () {
         let colIdx = table.cell(this).index().column;
-
+        
         $(table.cells().nodes()).removeClass('highlight');
         $(table.column(colIdx).nodes()).addClass('highlight');
      });
@@ -421,10 +431,10 @@ $(document).ready(function () {
         chart1.series[0].setData(chartData(table,2));
         chart2.series[0].setData(chartData(table,7));
      });
-    
+     
 });
 
-//pie chart custom function
+//pie chart custom function 
 function chartData(table,column) {
     let counts = {};
 

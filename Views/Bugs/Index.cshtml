@@ -1,10 +1,10 @@
 @{
     ViewData["Title"] = "Bugs";
 }
-<link rel="stylesheet" href="~/css/tableStyle.css" asp-append-version="true"/>
-<link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.jqueryui.min.css"/>
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"/>
-<link rel="stylesheet" href="https://cdn.datatables.net/select/1.4.0/css/select.dataTables.min.css"/>
+<link rel="stylesheet" type="text/css" href="~/DataTables/datatables.min.css"/>
+<link rel="stylesheet" href="~/css/tableStyle.css" asp-append-version="true"/>
+
 
 <br/>
 <br/>
@@ -58,6 +58,7 @@
         </tbody>
     </table>
 </div>
+
 <div class="highcharts-figure grid">
     <div id="chart1">
         
@@ -71,6 +72,7 @@
 {
     <script src="~/js/table.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript" src="~/DataTables/datatables.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/dataTables.jqueryui.min.js"></script>
     <script src="https://code.highcharts.com/highcharts.js"></script>
