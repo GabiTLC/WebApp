@@ -11,35 +11,29 @@
     
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
-    <link rel="stylesheet" href="~/WebApp.styles.css" asp-append-version="true"/>
-    
+
 
 </head>
 
 <body>
+<div class="behind"></div>
 <header class="main-header">
     <div class="logo">
         <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index"><em>Gabi</em> Serghi</a>
     </div>
 
-    <a class="menu-link"><i class="fa fa-bars"></i></a>
     <nav id="menu" class="main-nav">
         <ul class="main-menu">
             <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
             <li class="has-submenu">
                 <a asp-area="" asp-controller="Home" asp-action="Index">Portfolio</a>
-                <ul class="sub-menu">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Project 1</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Project 2</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Project 3</a></li>
-                </ul>
             </li>
             <li><a asp-area="" asp-controller="Bugs" asp-action="Index">BugTracker App</a></li>
             <li><a asp-area="" asp-controller="Home" asp-action="Index">Contact</a></li>
         </ul>
     </nav>
 </header>
-    
+
 <div>
     <main role="main" class="pb-3">
         @RenderBody()
@@ -48,13 +42,27 @@
 
 <footer class="border-top footer text-muted">
     <div>
-          &copy; 2022 - WebApp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        &copy; 2022 - WebApp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
     </div>
 </footer>
 
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+<script>
+    $(window).scroll(function (){
+        if ($(this).scrollTop()){
+            $(".main-menu").addClass("black");
+            $(".logo").addClass("black");
+        }
+        else{
+            $(".main-menu").removeClass("black");
+            $(".logo").removeClass("black")
+        }
+    })
+</script>
 
 @await RenderSectionAsync("Scripts", required: false)
 

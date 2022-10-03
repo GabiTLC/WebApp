@@ -1,0 +1,78 @@
+
+
+
+#bg-video {
+    min-width: 100%;
+    min-height: 100vh;
+    max-width: 100%;
+    max-height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+}
+.caption{
+    text-align: center;
+    position: relative;
+    bottom: 400px;
+}
+.caption h2 {
+    font-size: 26px;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: #ffffff;
+}
+.caption h2 em{
+    font-style: normal;
+    color: #f4a325;
+}
+.caption h6 {
+    float: right;
+    color: #ffffff;
+    padding-right: 250px;
+}
+.caption h6 em{
+    font-style: normal;
+    color: #f4a325;
+}
+.main-button{
+    background-color: #f3a225;
+    color:#fff;
+    text-decoration: none;
+    font-weight: 700;
+    margin-top:20px;
+    margin-left: 350px;
+    padding: 10px 0px;
+    text-align: center;
+    border: 3px solid transparent;
+    border-radius: 4px;
+    display: inline-block;
+    font-size: 16px;
+    transition: .75s;
+}
+.main-button a{
+    padding: 15px 30px 15px 30px;
+}
+.main-button:hover{
+    box-shadow:  0 0 80px #f2a125;
+    border:3px solid #f2a125;
+    border-radius: 16px;
+    background-color: black;
+    
+}
+.main-button:hover a{
+    color: #26bce8;
+}
+.main-button.border{
+    
+}
+
+.main-button a{
+    color: white;
+    transition: 1s;
+    
+}
+.main-button a:hover{
+    text-decoration: none;
+    border-radius: 6px;
+    color: #26bce8;
+}
+
