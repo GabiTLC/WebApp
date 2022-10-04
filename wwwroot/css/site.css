@@ -13,7 +13,9 @@ a:hover {
     width: 100%;
     top: 0;
 }
-
+body{
+    position: relative;
+}
 /*#region Header background*/
 .behind{
     background: black;

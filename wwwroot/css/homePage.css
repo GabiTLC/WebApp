@@ -1,6 +1,4 @@
 
-
-
 #bg-video {
     min-width: 100%;
     min-height: 100vh;
@@ -8,11 +6,15 @@
     max-height: 100vh;
     object-fit: cover;
     z-index: -1;
+    position: absolute;
 }
+
+/*#region button div*/
 .caption{
     text-align: center;
     position: relative;
-    bottom: 400px;
+    padding-top: 200px;
+    padding-bottom: 272px;
 }
 .caption h2 {
     font-size: 26px;
@@ -40,7 +42,7 @@
     font-weight: 700;
     margin-top:20px;
     margin-left: 350px;
-    padding: 10px 0px;
+    padding: 10px 0;
     text-align: center;
     border: 3px solid transparent;
     border-radius: 4px;
@@ -75,4 +77,179 @@
     border-radius: 6px;
     color: #26bce8;
 }
+/*#endregion button div*/
 
+/*#region Section2*/
+section.section2 {
+    overflow: auto;
+    background-image: url(../lib/assets/wallpaper.jpg);
+    background-position: center center;
+    background-attachment: fixed;
+    background-repeat: repeat;
+    background-size: initial;
+    height: 580px;
+}
+.section2-div{
+    position: relative;
+    text-align: center;
+    color: white;
+    height: 100%;
+    width: 100%;
+}  
+.section2-div img{
+    object-fit: fill;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    width: 100%;
+    height: 100%;
+}
+.container-s2{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+/*#endregion Section2*/
+
+/*#region Section3*/
+
+section.section3 {
+    overflow: auto;
+    background-image: url(../lib/assets/wallpaper.jpg);
+    background-position: center center;
+    background-attachment: fixed;
+    background-repeat: repeat;
+    background-size: initial;
+    height: 580px;
+}
+.section3-div{
+    position: relative;
+    text-align: center;
+    color: white;
+    height: 100%;
+    width: 100%;
+}
+.section3-div img{
+    object-fit: fill;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    width: 100%;
+    height: 100%;
+}
+
+.container-s3{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+/*#endregion Section3*/
+
+/*#region Section4*/
+
+section.section4 {
+    overflow: auto;
+    background-image: url(../lib/assets/wallpaper.jpg);
+    background-position: center center;
+    background-attachment: fixed;
+    background-repeat: repeat;
+    background-size: initial;
+    height: 580px;
+}
+.section4-div{
+    position: relative;
+    text-align: center;
+    color: white;
+    height: 100%;
+    width: 100%;
+}
+.section4-div img{
+    object-fit: fill;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    width: 100%;
+    height: 100%;
+}
+.container-s4{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+/*#endregion Section4*/
+
+/*#region Responsive*/ 
+/*---------------------------------------------
+responsive
+--------------------------------------------- */
+
+@media(min-height: 1680px){
+    .caption{
+        text-align: center;
+        position: relative;
+        padding-top: 700px;
+        padding-bottom: 972px;
+    }
+    section.section2 {
+        overflow: auto;
+        background-image: url(../lib/assets/wallpaper.jpg);
+        background-position: center center;
+        background-attachment: fixed;
+        background-repeat: repeat;
+        background-size: initial;
+        height:1980px;
+    }
+}
+
+@media (max-width: 992px) {
+
+    .main-banner .caption {
+        top: 60%;
+    }
+
+    .main-banner .caption h2 {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        font-size: 22px;
+    }
+
+    .main-banner .caption .main-button-red {
+        margin-top: 15px;
+    }
+
+    section.upcoming-meetings {
+        padding-top: 400px;
+    }
+
+    section.upcoming-meetings .categories {
+        margin-right: 0;
+        margin-bottom: 30px;
+    }
+} 
+@media (max-width: 991px) {
+    html, body {
+        overflow-x: hidden;
+    }
+    .mobile-top-fix {
+        margin-top: 30px;
+        margin-bottom: 0;
+    }
+    .mobile-bottom-fix {
+        margin-bottom: 30px;
+    }
+    .mobile-bottom-fix-big {
+        margin-bottom: 60px;
+    }
+}
+@media screen and (max-width: 767px) {
+
+    .main-banner .caption h6 {
+        font-weight: 500;
+    }
+
+    .main-banner .caption h2 {
+        font-size: 36px;
+    }
+    
+}
+/*#endregion*/
