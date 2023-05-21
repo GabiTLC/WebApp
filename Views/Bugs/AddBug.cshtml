@@ -1,7 +1,10 @@
 @model WebApp.Models.Bug
 
 <link rel="stylesheet" href="~/css/bugPage.css" asp-append-version="true"/>
-
+<head>
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
 
 @{
     ViewData["Title"] = "Add Bug";
@@ -13,7 +16,7 @@
 <h2 class="text-info text-dark">@(Model.Id!=0 ? "Edit" : "Add") Bug</h2>
 @if (Model.Id != 0)
         {
-            <h4 class="text-info text-dark">Changes will only be aplied upon hiting the "Confirm Edit" Button></h4>
+            <h4 class="text-info text-dark">Changes will only be applied upon hitting the "Confirm Edit" Button></h4>
         }
 
 <div class="pt-2 pl-0">
